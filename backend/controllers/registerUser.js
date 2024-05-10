@@ -3,7 +3,7 @@ const User = require("../model/userModle");
 
 const bcrypt = require("bcrypt");
 
-const registerUser = AsyncHandler(async (req, res) => {
+const authregister = AsyncHandler(async (req, res) => {
   const { username, useremail, password, mobilenumber } = req.body;
 
   const checkUser = await User.findOne({ useremail });
@@ -33,7 +33,7 @@ const registerUser = AsyncHandler(async (req, res) => {
   }
 });
 
-const loginUser = AsyncHandler(async (req, res) => {
+const authlogin = AsyncHandler(async (req, res) => {
   const { useremail, password } = req.body;
   if (!useremail || !password) {
     res.status(404);
@@ -57,6 +57,6 @@ const loginUser = AsyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  registerUser,
-  loginUser,
+  authregister,
+  authlogin,
 };
