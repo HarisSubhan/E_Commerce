@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { BiCheckbox } from "react-icons/bi";
-
+import { useDispatch } from "react-redux";
+import { regUser } from "../features/auth/authSlice";
 const Registeruser = () => {
   const [formFields, setFormFields] = useState({
     username: "",
@@ -9,6 +10,19 @@ const Registeruser = () => {
     password: "",
     mobilenumber: "",
   });
+
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const data = {
+      username,
+      useremail,
+      password,
+      mobilenumber,
+    };
+    dispatch(regUser(data));
+  };
 
   const handleChange = (e) => {
     setFormFields((preValue) => ({
@@ -97,7 +111,11 @@ const Registeruser = () => {
               </p>
             </div>
 
-            <Button style={{ background: "#5C3DC3" }} className="w-100  fs-3">
+            <Button
+              onClick={handleClick}
+              style={{ background: "#5C3DC3" }}
+              className="w-100  fs-3"
+            >
               Register
             </Button>
             <div className="log d-flex justify-content-center mt-3">
