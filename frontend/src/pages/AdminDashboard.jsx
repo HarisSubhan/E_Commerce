@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
+import DashBoard from "../components/DashBoard";
 
 const AdminDashboard = () => {
   return (
@@ -14,8 +15,8 @@ const AdminDashboard = () => {
         >
           <Sidebar />
         </Col>
-        <Col xl={10} lg={9}>
-          New Task
+        <Col className="p-0 m-0" xl={10} lg={9}>
+          <DashBoard />
         </Col>
       </Row>
     </>
