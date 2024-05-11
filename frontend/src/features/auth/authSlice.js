@@ -13,11 +13,12 @@ const initialState = {
 
 export const regUser = createAsyncThunk(
   "auth/reg-user",
-  async (userData, thunkiAPI) => {
+  async (userData, thunkAPI) => {
     try {
       return await registerUser(userData);
     } catch (error) {
-      console.log(error);
+      const message = error.response.data.message;
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -39,6 +40,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(regUser.rejected, (state, action) => {
+        state.user = null;
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -3,10 +3,9 @@ import axios from "axios";
 const base_url = "http://localhost:3002/api/user/";
 
 export const registerUser = async (userData) => {
-  const response = await axios.post(`${base_url}/auth-register`, userData);
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+  const responce = await axios.post(`${base_url}/auth-register`, userData);
+  if (responce.data) {
+    localStorage.setItem("user", JSON.stringify(responce.data));
   }
-
-  return response.data;
+  return responce.data;
 };

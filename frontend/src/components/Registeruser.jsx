@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { BiCheckbox } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { regUser } from "../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { regUser, reset } from "../features/auth/authSlice";
+import toast from "react-hot-toast";
 const Registeruser = () => {
+  const dispatch = useDispatch();
+
+  const { isError, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    dispatch(reset());
+  }, [isError]);
+
   const [formFields, setFormFields] = useState({
     username: "",
     useremail: "",
@@ -11,7 +23,13 @@ const Registeruser = () => {
     mobilenumber: "",
   });
 
-  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    setFormFields((preValue) => ({
+      ...preValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const { username, useremail, password, mobilenumber } = formFields;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -23,15 +41,6 @@ const Registeruser = () => {
     };
     dispatch(regUser(data));
   };
-
-  const handleChange = (e) => {
-    setFormFields((preValue) => ({
-      ...preValue,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const { username, useremail, password, mobilenumber } = formFields;
 
   return (
     <>
