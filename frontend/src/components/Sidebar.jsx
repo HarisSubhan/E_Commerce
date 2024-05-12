@@ -6,7 +6,7 @@ import { sidebarData } from "../data/sidebarData";
 const Sidebar = () => {
   return (
     <>
-      <div className=" mt-3 gap-3 justify-content-center d-flex d-block mx-auto">
+      <div className="sidebar mt-3 gap-3 justify-content-center d-flex d-block mx-auto">
         <img
           width={40}
           alt=""
