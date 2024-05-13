@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Col, Row } from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import FirstLayer from "../components/FirstLayer";
-import { SecondLayer } from "../components/SecondLayer";
-import ThirdLayer from "../components/ThirdLayer";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
+import FirstLayer from "./FirstLayer";
+import { SecondLayer } from "./SecondLayer";
+import ThirdLayer from "./ThirdLayer";
 
-const AdminDashboard = () => {
+const HomeAdmin = () => {
   return (
     <>
       <Row>
@@ -29,4 +29,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default HomeAdmin;

@@ -6,20 +6,19 @@ import FirstLayer from "../components/FirstLayer";
 import { SecondLayer } from "../components/SecondLayer";
 import ThirdLayer from "../components/ThirdLayer";
 
-const AdminDashboard = () => {
+const Admin = () => {
+  const move = useRef();
+  const moveSidebar = () => {
+    move.current.classList.toggle("show");
+  };
   return (
     <>
       <Row>
-        <Col
-          className="p-4"
-          style={{ background: "#5C3DC3", height: "100vh" }}
-          xl={2}
-          lg={3}
-        >
-          <Sidebar />
+        <Col className="" style={{}} xl={2} lg={3}>
+          <Sidebar move={move} moveSidebar={moveSidebar} />
         </Col>
         <Col className="p-0 m-0" xl={10} lg={9}>
-          <Header />
+          <Header move={move} moveSidebar={moveSidebar} />
           <FirstLayer />
           <SecondLayer />
           <ThirdLayer />
@@ -29,4 +28,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Admin;

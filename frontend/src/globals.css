@@ -1,11 +1,33 @@
 body {
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
   background-color: #eef0fc;
 }
 .dropdownmenu {
-  margin-top: 255px;
+  margin-top: 88%;
+  margin-right: 150px;
   z-index: 6666;
+}
+.maria {
+  display: block;
+}
+
+.sidebar {
+  transition: all 0.9s;
+}
+
+.show {
+  transform: translateX(-100%);
 }
 
 @media only screen and (max-width: 1000px) {
+  .maria {
+    display: none;
+  }
+
+  .thirdlayer {
+    flex-direction: column;
+  }
+  .card {
+    margin-top: 15px;
+  }
 }
