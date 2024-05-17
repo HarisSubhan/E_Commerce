@@ -54,9 +54,9 @@ const Registeruser = () => {
             src="https://mannatthemes.com/robotech/default/assets/images/logo-sm.png"
             alt=""
           />
-          <h3 className="text-white">Let's Get Started Tailwind</h3>
+          <h3 className="text-white">Let's Get Started</h3>
           <h5 style={{ color: "#94A3B8" }} className="">
-            Sign in to continue to Tailwind.
+            Sign Up to continue to Robotech.
           </h5>
         </Card>
         <Card className="col-xl-4 col-lg-6 mx-auto p-2 ">

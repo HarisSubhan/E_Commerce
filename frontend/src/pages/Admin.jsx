@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -11,6 +11,7 @@ const Admin = () => {
   const moveSidebar = () => {
     move.current.classList.toggle("show");
   };
+
   return (
     <>
       <Row>

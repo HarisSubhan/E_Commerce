@@ -1,5 +1,5 @@
 body {
-  /* overflow: hidden !important; */
+  overflow-x: hidden !important;
   background-color: #eef0fc;
 }
 .dropdownmenu {
@@ -17,6 +17,10 @@ body {
 
 .show {
   transform: translateX(-100%);
+}
+
+.drag {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 1000px) {
