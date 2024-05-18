@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     <>
       <Row>
         <Col
-          className="p-4"
+          className="p-2"
           style={{ background: "#5C3DC3", height: "100vh" }}
           xl={2}
           lg={3}

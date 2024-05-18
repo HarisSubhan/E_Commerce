@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Col, Row } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -19,7 +19,7 @@ const Admin = () => {
           <Sidebar move={move} moveSidebar={moveSidebar} />
         </Col>
         <Col className="p-0 m-0" xl={10} lg={9}>
-          <Header move={move} moveSidebar={moveSidebar} />
+          <Header />
           <FirstLayer />
           <SecondLayer />
           <ThirdLayer />

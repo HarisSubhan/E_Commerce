@@ -1,22 +1,75 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-
+import { IoCloseCircleOutline } from "react-icons/io5";
+import axios from "axios";
 const AddProduct = () => {
-  const [file, setFile] = useState();
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [close, setClose] = useState(true);
 
-  const handleChange = (e) => {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
+  const handleClose = () => {
+    setClose(false);
+    setImagePreview(false);
+    console.log(setClose);
   };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const url = URL?.createObjectURL(file);
+    setImagePreview(url);
+    setImage(file);
+    console.log(url);
+  };
+
+  const uploadImage = async () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "la5xwjjh");
+    try {
+      setImageLoading(true);
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dl0wmamcy/image/upload",
+        data
+      );
+      setImageLoading(false);
+      console.log(response);
+      return response.data.url;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addproduct = async () => {
+    const imageData = await uploadImage(image);
+  };
+
   return (
     <>
       <Row className="p-4 m-0">
         <Col xl={3} lg={4}>
           <p>Upload Image</p>
           <Card
-            style={{ background: "#EEF0FC", height: "30%", cursor: "pointer" }}
+            style={{ background: "#EEF0FC", height: "50%", cursor: "pointer" }}
             className=""
           >
+            {imagePreview && (
+              <div
+                style={{ height: "" }}
+                className="w-25  imagePreview position-absolute   "
+              >
+                {close && (
+                  <IoCloseCircleOutline size={20} onClick={handleClose} />
+                )}
+                <img
+                  className="rounded object-fit-fill"
+                  width={450}
+                  height={180}
+                  src={imagePreview}
+                  alt=""
+                />
+              </div>
+            )}
             <div className="text-center mt-5 position-relative">
               <label style={{ cursor: "pointer" }} htmlFor="">
                 Drag & Drop your files or{" "}
@@ -28,12 +81,11 @@ const AddProduct = () => {
                 style={{ transform: "translate(-50%)", cursor: "pointer" }}
                 className="drag position-absolute"
                 type="file"
-                onChange={handleChange}
+                onChange={handleImageChange}
               />
             </div>
-            <img src={file} />
           </Card>
-          <div className="d-flex fs-5  gap-2 mt-3">
+          {/* <div className="d-flex fs-5  gap-2 mt-3">
             <Card
               style={{ background: "#EEF0FC", cursor: "pointer" }}
               className=""
@@ -71,7 +123,7 @@ const AddProduct = () => {
               </div>
               <img src={file} />
             </Card>
-          </div>
+          </div> */}
         </Col>
         <Col xl={6} lg={4}>
           <p>Title</p>
@@ -119,7 +171,10 @@ const AddProduct = () => {
               placeholder="Gender"
             />
             <div className="button d-flex mt-4 gap-2">
-              <Button style={{ background: "#49309C", color: "white" }}>
+              <Button
+                onClick={addproduct}
+                style={{ background: "#49309C", color: "white" }}
+              >
                 Add Product
               </Button>
               <Button style={{ background: "transparent", color: "#49309C" }}>
@@ -135,7 +190,7 @@ const AddProduct = () => {
               <img
                 className="d-block mx-auto"
                 width={300}
-                src="https://mannatthemes.com/robotech/default/assets/images/products/pro-3.png"
+                src={imagePreview}
                 alt=""
               />
             </div>

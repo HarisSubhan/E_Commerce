@@ -8,8 +8,8 @@ const Sidebar = ({ move, moveSidebar }) => {
     <>
       <div
         style={{ background: "#5C3DC3", height: "100vh" }}
-        ref={move}
         className="sidebar p-4  "
+        ref={move}
       >
         <div className="mt-3  justify-content-center d-flex d-block mx-auto">
           <img
