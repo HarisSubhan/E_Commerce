@@ -27,26 +27,26 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      state.isLoading = false;
-      state.isSuccess = false;
-      state.isError = false;
-      state.message = "";
+      state.addProductLoading = false;
+      state.addProductSuccess = false;
+      state.addProductError = false;
+      state.addProductmessage = "";
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(addProduct.pending, (state) => {
-        state.isLoading = true;
+        state.addProductLoading = true;
       })
       .addCase(addProduct.rejected, (state, action) => {
         state.user = null;
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
+        state.addProductLoading = false;
+        state.addProductError = true;
+        state.addProductmessage = action.payload;
       })
       .addCase(addProduct.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
+        state.addProductLoading = false;
+        state.addProductSuccess = true;
         state.user = action.payload;
       });
   },

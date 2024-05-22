@@ -1,8 +1,80 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, reset } from "../features/addProduct/addProductSlice";
+import toast from "react-hot-toast";
+
 const AddProduct = () => {
+  const dispatch = useDispatch();
+
+  const { addProductError, message } = useSelector((state) => state.addProduct);
+
+  useEffect(() => {
+    if (addProductError) {
+      toast.error(message);
+    }
+    dispatch(reset());
+  }, [addProductError, message, dispatch]);
+
+  const [formFields, setFormFields] = useState({
+    title: "",
+    category: "",
+    description: "",
+    productDate: "",
+    price: "",
+    forThisProduct: "",
+    size: "",
+  });
+
+  const {
+    title,
+    category,
+    description,
+    productDate,
+    price,
+    forThisProduct,
+    size,
+  } = formFields;
+
+  const [productDetails, setProductDetails] = useState({
+    productTitle: "",
+    productCategory: "",
+    productDescription: "",
+    productDate: "",
+    productPrice: "",
+    forThisProduct: "",
+    productSize: "",
+  });
+
+  const handleChange = (e) => {
+    setFormFields((prevValue) => ({
+      ...prevValue,
+      [e.target.name]: e.target.value,
+    }));
+
+    setProductDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(setProductDetails);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const data = {
+      title,
+      category,
+      description,
+      productDate,
+      price,
+      forThisProduct,
+      size,
+    };
+    dispatch(addProduct(data));
+  };
+
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -10,16 +82,14 @@ const AddProduct = () => {
 
   const handleClose = () => {
     setClose(false);
-    setImagePreview(false);
-    console.log(setClose);
+    setImagePreview(null);
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const url = URL?.createObjectURL(file);
+    const url = URL.createObjectURL(file);
     setImagePreview(url);
     setImage(file);
-    console.log(url);
   };
 
   const uploadImage = async () => {
@@ -33,204 +103,207 @@ const AddProduct = () => {
         data
       );
       setImageLoading(false);
-      console.log(response);
       return response.data.url;
     } catch (error) {
       console.log(error);
+      setImageLoading(false);
     }
   };
 
-  const addproduct = async () => {
-    const imageData = await uploadImage(image);
+  const addProductHandler = async () => {
+    const imageUrl = await uploadImage();
+    const data = {
+      ...formFields,
+      image: imageUrl,
+    };
+    dispatch(addProduct(data));
   };
 
   return (
-    <>
-      <Row className="p-4 m-0">
-        <Col xl={3} lg={4}>
-          <p>Upload Image</p>
-          <Card
-            style={{ background: "#EEF0FC", height: "50%", cursor: "pointer" }}
-            className=""
-          >
-            {imagePreview && (
-              <div
-                style={{ height: "" }}
-                className="w-25  imagePreview position-absolute   "
-              >
-                {close && (
-                  <IoCloseCircleOutline size={20} onClick={handleClose} />
-                )}
-                <img
-                  className="rounded object-fit-fill"
-                  width={450}
-                  height={180}
-                  src={imagePreview}
-                  alt=""
-                />
-              </div>
-            )}
-            <div className="text-center mt-5 position-relative">
-              <label style={{ cursor: "pointer" }} htmlFor="">
-                Drag & Drop your files or{" "}
-              </label>
-              <span style={{ cursor: "pointer" }} className="">
-                <u> Browse</u>
-              </span>
-              <input
-                style={{ transform: "translate(-50%)", cursor: "pointer" }}
-                className="drag position-absolute"
-                type="file"
-                onChange={handleImageChange}
-              />
-            </div>
-          </Card>
-          {/* <div className="d-flex fs-5  gap-2 mt-3">
-            <Card
-              style={{ background: "#EEF0FC", cursor: "pointer" }}
-              className=""
-            >
-              <div className="text-center position-relative">
-                <label style={{ cursor: "pointer" }} htmlFor="">
-                  Drag & Drop your files or{" "}
-                </label>
-                <span style={{ cursor: "pointer" }} className="">
-                  <u> Browse</u>
-                </span>
-                <input
-                  style={{ transform: "translate(-50%)" }}
-                  className="drag position-absolute"
-                  type="file"
-                  onChange={handleChange}
-                />
-              </div>
-              <img src={file} />
-            </Card>
-            <Card style={{ background: "#EEF0FC" }} className="">
-              <div className="text-center  position-relative">
-                <label style={{ cursor: "pointer" }} htmlFor="">
-                  Drag & Drop your files or{" "}
-                </label>
-                <span style={{ cursor: "pointer" }} className="">
-                  <u> Browse</u>
-                </span>
-                <input
-                  style={{ transform: "translate(-50%)" }}
-                  className="drag position-absolute"
-                  type="file"
-                  onChange={handleChange}
-                />
-              </div>
-              <img src={file} />
-            </Card>
-          </div> */}
-        </Col>
-        <Col xl={6} lg={4}>
-          <p>Title</p>
-          <Card style={{ background: "#EEF0FC" }} className="p- border-0">
-            {/* <label className="mt-3">Title</label> */}
-            <Form.Control
-              style={{ background: "#EEF0FC" }}
-              placeholder="Title"
-            />
-            <label className="mt-3">Category</label>
-            <Form.Control
-              style={{ background: "#EEF0FC" }}
-              placeholder="Category"
-            />
-            <label className="mt-3">Description</label>
-            <Form.Control
-              style={{ background: "#EEF0FC" }}
-              placeholder="Description"
-            />
-            <div className="d-flex gap-3  ">
-              <div className="product-data">
-                <label className="mt-3">Product Date</label>
-                <Form.Control
-                  style={{ background: "#EEF0FC" }}
-                  className=""
-                  placeholder=""
-                />
-              </div>
-              <div className="price">
-                <label className="mt-3">Price</label>
-                <Form.Control
-                  style={{ background: "#EEF0FC" }}
-                  placeholder="Price"
-                />
-              </div>
-            </div>
-            <label className="mt-3">For this product</label>
-            <Form.Select
-              style={{ background: "#EEF0FC" }}
-              placeholder="Gender"
-            />
-            <label className="mt-3">Size</label>
-            <Form.Select
-              style={{ background: "#EEF0FC" }}
-              placeholder="Gender"
-            />
-            <div className="button d-flex mt-4 gap-2">
-              <Button
-                onClick={addproduct}
-                style={{ background: "#49309C", color: "white" }}
-              >
-                Add Product
-              </Button>
-              <Button style={{ background: "transparent", color: "#49309C" }}>
-                Save Product
-              </Button>
-            </div>
-          </Card>
-        </Col>
-        <Col xl={3} lg={4}>
-          <div className="product-detail ">
-            <div className="product-image">
-              <p className="p-o m-0">Product Image</p>
+    <Row className="p-4 m-0">
+      <Col xl={3} lg={4}>
+        <p>Upload Image</p>
+        <Card
+          style={{ background: "#EEF0FC", height: "50%", cursor: "pointer" }}
+        >
+          {imagePreview && (
+            <div className="w-25 imagePreview position-absolute">
+              {close && (
+                <IoCloseCircleOutline size={20} onClick={handleClose} />
+              )}
               <img
-                className="d-block mx-auto"
-                width={300}
+                className="rounded object-fit-fill"
+                width={450}
+                height={180}
                 src={imagePreview}
                 alt=""
               />
             </div>
-            <div className="product-title">
-              <p style={{ color: "#475569" }} className="p-o m-0 fs-5">
-                Product Title
-              </p>
-              <h4 className="p-o m-0">Mannat HD, Smart LED Fire TV</h4>
+          )}
+          <div className="text-center mt-5 position-relative">
+            <label style={{ cursor: "pointer" }} htmlFor="fileInput">
+              Drag & Drop your files or <u>Browse</u>
+            </label>
+            <input
+              id="fileInput"
+              style={{ transform: "translate(-50%)", cursor: "pointer" }}
+              className="drag position-absolute"
+              type="file"
+              onChange={handleImageChange}
+            />
+          </div>
+        </Card>
+      </Col>
+      <Col xl={6} lg={4}>
+        <p>Title</p>
+        <Card style={{ background: "#EEF0FC" }} className="p-3 border-0">
+          <Form.Control
+            onChange={handleChange}
+            name="title"
+            value={title}
+            style={{ background: "#EEF0FC" }}
+            placeholder="Title"
+          />
+          <label className="mt-3">Category</label>
+          <Form.Select
+            onChange={handleChange}
+            name="category"
+            value={category}
+            style={{ background: "#EEF0FC" }}
+            placeholder="Category"
+          >
+            <option value="">All Category</option>
+            <option value="option1">Electronic</option>
+            <option value="option2">Clothes</option>
+            <option value="option2">Footwear</option>
+            <option value="option2">Other</option>
+          </Form.Select>
+
+          <label className="mt-3">Description</label>
+          <Form.Control
+            onChange={handleChange}
+            name="description"
+            value={description}
+            style={{ background: "#EEF0FC" }}
+            placeholder="Description"
+          />
+          <div className="d-flex gap-3">
+            <div className="product-data">
+              <label className="mt-3">Product Date</label>
+              <Form.Control
+                onChange={handleChange}
+                name="productDate"
+                value={productDate}
+                style={{ background: "#EEF0FC" }}
+              />
             </div>
-            <div className="product-description mt-3">
-              <p style={{ color: "#475569" }} className="p-o m-0 fs-5">
-                Description
-              </p>
-              <p className="p-o m-0">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-              </p>
-            </div>
-            <div className="product-pro-date mt-4">
-              <p style={{ color: "#475569" }} className="p-o m-0 fs-5">
-                Pro. Date
-              </p>
-              <h4 className="p-o m-0">02/05/2023</h4>
-            </div>
-            <div className="for-this-product mt-4">
-              <p style={{ color: "#475569" }} className="p-o m-0 fs-5">
-                For this product
-              </p>
-              <h4 className="p-o m-0">Other</h4>
-            </div>
-            <div className="product-size mt-4">
-              <p style={{ color: "#475569" }} className="p-o m-0 fs-5">
-                Size
-              </p>
-              <h4 className="p-o m-0">SM, MD, LG, XL</h4>
+            <div className="price">
+              <label className="mt-3">Price</label>
+              <Form.Control
+                onChange={handleChange}
+                name="price"
+                value={price}
+                style={{ background: "#EEF0FC" }}
+                placeholder="Price"
+              />
             </div>
           </div>
-        </Col>
-      </Row>
-    </>
+          <label className="mt-3">For this product</label>
+          <Form.Select
+            onChange={handleChange}
+            name="forThisProduct"
+            value={forThisProduct}
+            style={{ background: "#EEF0FC" }}
+          >
+            <option value="">Select an option</option>
+            <option value="option1">Male</option>
+            <option value="option2">Female</option>
+            <option value="option2">Children</option>
+            <option value="option2">Other</option>
+          </Form.Select>
+          <label className="mt-3">Size</label>
+          <Form.Select
+            onChange={handleChange}
+            name="size"
+            value={size}
+            style={{ background: "#EEF0FC" }}
+          >
+            <option value="">Select a size</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="large">X Large</option>
+            <option value="large">XX Large</option>
+          </Form.Select>
+          <div className="button d-flex mt-4 gap-2">
+            <Button
+              onClick={handleClick}
+              style={{ background: "#49309C", color: "white" }}
+            >
+              Add Product
+            </Button>
+            <Button style={{ background: "transparent", color: "#49309C" }}>
+              Save Product
+            </Button>
+          </div>
+        </Card>
+      </Col>
+      <Col xl={3} lg={4}>
+        <div className="product-detail">
+          <div className="product-image">
+            <p className="p-0 m-0">Product Image</p>
+            <img
+              className="d-block mx-auto"
+              width={300}
+              src={imagePreview}
+              alt=""
+            />
+          </div>
+          <div className="product-title">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Product Title
+            </p>
+            <h4 className="p-0 m-0">{productDetails.productTitle}</h4>
+          </div>
+          <div className="product-Category mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Category
+            </p>
+            <p className="p-0 m-0">{productDetails.productCategory}</p>
+          </div>
+          <div className="product-description mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Description
+            </p>
+            <p className="p-0 m-0">{productDetails.productDescription}</p>
+          </div>
+          <div className="product-date mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Product Date
+            </p>
+            <p className="p-0 m-0">{productDetails.productDate}</p>
+          </div>
+          <div className="product-price mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Product Price
+            </p>
+            <p className="p-0 m-0">{productDetails.productPrice}</p>
+          </div>
+          <div className="forThisProduct mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              For This Product
+            </p>
+            <p className="p-0 m-0">{productDetails.forThisProduct}</p>
+          </div>
+          <div className="product-Size mt-3">
+            <p style={{ color: "#475569" }} className="p-0 m-0 fs-5">
+              Product Size
+            </p>
+            <p className="p-0 m-0">{productDetails.productSize}</p>
+          </div>
+        </div>
+      </Col>
+    </Row>
   );
 };
 

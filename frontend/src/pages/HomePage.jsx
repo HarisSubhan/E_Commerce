@@ -1,7 +1,12 @@
 import React from "react";
+import HomePageHeader from "../components/Homepage/HomePageHeader";
 
 const HomePage = () => {
-  return <div className="display-1">This is HomePage</div>;
+  return (
+    <>
+      <HomePageHeader />
+    </>
+  );
 };
 
 export default HomePage;
