@@ -22,7 +22,7 @@ const Admin = () => {
           <Header />
           <FirstLayer />
           <SecondLayer />
-          <ThirdLayer />
+          {/* <ThirdLayer /> */}
         </Col>
       </Row>
     </>

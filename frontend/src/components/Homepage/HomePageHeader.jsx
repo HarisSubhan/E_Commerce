@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HeaderUser from "../HeaderUser";
 import {
   AppBar,
   Toolbar,
@@ -31,8 +32,11 @@ const Header = () => {
       color="transparent"
       elevation={0}
     >
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Toolbar
+        className="toolbar"
+        sx={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <Box className="image" sx={{ display: "flex", alignItems: "center" }}>
           <img
             src="https://mannatthemes.com/robotech/default/assets/images/logo-sm.png"
             alt="Logo"
@@ -46,6 +50,7 @@ const Header = () => {
         </Box>
 
         <Box
+          className="search-bar "
           sx={{
             display: "flex",
             alignItems: "center",
@@ -111,48 +116,7 @@ const Header = () => {
             sx={{ display: "flex", alignItems: "center", marginLeft: "16px" }}
           >
             <div className="d-flex gap-4">
-              <div
-                onClick={click}
-                style={{ cursor: "pointer" }}
-                className="d-flex gap-2 align-items-center"
-              >
-                <img
-                  width={40}
-                  height={40}
-                  className="rounded-circle"
-                  src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
-                  alt=""
-                />
-                <div className="flex-column maria align-items-center">
-                  <p className="p-0 m-0">Maria Gibson</p>
-                  <p className="p-0 m-0">Admin</p>
-                </div>
-                {dropdownMenu && (
-                  <div className="  position-absolute  ">
-                    <ul
-                      style={{ color: "MenuText" }}
-                      className="bg-white  dropdownmenu  fs-4 position-relative  border"
-                    >
-                      <li className="gap-2 d-flex align-items-center">
-                        <IoPersonOutline />
-                        Profile
-                      </li>
-                      <li className="gap-2 d-flex align-items-center">
-                        <IoSettingsOutline />
-                        Setting
-                      </li>
-                      <li className="gap-2 d-flex align-items-center">
-                        <FiDollarSign />
-                        Earning
-                      </li>
-                      <li className="gap-2 d-flex align-items-center">
-                        <FaPowerOff />
-                        Sign Out
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </div>
+              <HeaderUser />
             </div>
           </Box>
         </Box>

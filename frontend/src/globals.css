@@ -2,10 +2,12 @@ body {
   overflow-x: hidden !important;
   background-color: #eef0fc;
 }
+
 .dropdownmenu {
-  margin-top: 88%;
-  margin-right: 150px;
-  z-index: 6666;
+  margin-top: 10px;
+}
+.menu {
+  margin-top: 50% !important;
 }
 .maria {
   display: block;
@@ -28,15 +30,29 @@ body {
   margin-left: 10px;
 }
 
-@media only screen and (max-width: 1000px) {
-  .maria {
-    display: none;
-  }
+.search-bar {
+  display: block !important;
+}
 
+.menu2 {
+  display: block;
+}
+
+@media only screen and (max-width: 1000px) {
   .thirdlayer {
     flex-direction: column;
   }
   .card {
     margin-top: 15px;
+  }
+  .search-bar {
+    display: none !important;
+  }
+  .menu2,
+  .upto {
+    display: none !important;
+  }
+  .mdlist {
+    display: block !important;
   }
 }
