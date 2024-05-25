@@ -1,10 +1,11 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import FirstLayer from "../components/FirstLayer";
-import { SecondLayer } from "../components/SecondLayer";
-import ThirdLayer from "../components/ThirdLayer";
+import Sidebar from "../../components/Sidebar";
+import Header from "../../components/Header";
+import FirstLayer from "../../components/FirstLayer";
+import { SecondLayer } from "../../components/SecondLayer";
+import Sidenav from "../../components/Sidenav";
+// import ThirdLayer from "../components/ThirdLayer";
 
 const AdminDashboard = () => {
   return (
@@ -12,17 +13,17 @@ const AdminDashboard = () => {
       <Row>
         <Col
           className="p-2"
-          style={{ background: "#5C3DC3", height: "100vh" }}
+          style={{ background: "", height: "100vh" }}
           xl={2}
           lg={3}
         >
-          <Sidebar />
+          <Sidenav />
         </Col>
         <Col className="p-0 m-0" xl={10} lg={9}>
           <Header />
           <FirstLayer />
           <SecondLayer />
-          <ThirdLayer />
+          {/* <ThirdLayer /> */}
         </Col>
       </Row>
     </>
