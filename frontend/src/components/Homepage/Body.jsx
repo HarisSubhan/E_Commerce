@@ -6,9 +6,9 @@ import Col from "react-bootstrap/Col";
 const Body = () => {
   return (
     <>
-      <Toolbar className="bg-soft-gradient ">
+      <div className="bg-soft-gradient d-flex body justify-content-center align-items-center p-3   ">
         <Col>
-          <Box className="mt-3 p-4 mx-auto">
+          <Box className="justify-content-center  content-wrapper mt-3 p-4 mx-auto">
             <Button
               className="p-3 "
               variant="outlined"
@@ -26,7 +26,7 @@ const Body = () => {
               Introduced a new model for online grocery shopping and convenient
               home delivery.
             </Typography>
-            <Button className="mt-3" variant="outlined">
+            <Button className="mt-4" variant="outlined">
               Explore Store{" "}
             </Button>
           </Box>
@@ -58,7 +58,7 @@ const Body = () => {
             </Carousel>
           </Box>
         </Col>
-      </Toolbar>
+      </div>
     </>
   );
 };

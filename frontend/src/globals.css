@@ -71,4 +71,10 @@ body {
   .maria {
     display: none;
   }
+  .body {
+    flex-direction: column;
+  }
+  .collection {
+    flex-direction: column;
+  }
 }
