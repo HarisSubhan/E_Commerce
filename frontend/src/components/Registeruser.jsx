@@ -56,7 +56,7 @@ const Registeruser = () => {
           />
           <h3 className="text-white">Let's Get Started</h3>
           <h5 style={{ color: "#94A3B8" }} className="">
-            Sign Up to continue to Robotech.
+            Sign Up to continue to Admin Panel.
           </h5>
         </Card>
         <Card className="col-xl-4 col-lg-6 mx-auto p-2 ">

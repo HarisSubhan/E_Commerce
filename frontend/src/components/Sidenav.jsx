@@ -18,6 +18,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineHome } from "react-icons/md";
+import { CiHome } from "react-icons/ci";
 
 const drawerWidth = 300;
 
@@ -130,7 +132,7 @@ export default function Sidenav() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <InboxIcon />
+                <MdOutlineHome size={30} />
               </ListItemIcon>
               <ListItemText primary="Admin Dashboard" />
             </ListItemButton>
@@ -138,7 +140,7 @@ export default function Sidenav() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <InboxIcon />
+                <CiHome size={30} />
               </ListItemIcon>
               <ListItemText primary="Product" />
             </ListItemButton>
@@ -225,7 +227,12 @@ export default function Sidenav() {
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <ListItemText primary="Register" />
+              <ListItemText
+                primary="Register"
+                onClick={() => {
+                  navigate("/register-user");
+                }}
+              />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -233,7 +240,7 @@ export default function Sidenav() {
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <ListItemText primary="Recover P" />
+              <ListItemText primary="Recover" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>

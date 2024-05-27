@@ -1,8 +1,5 @@
 import React from "react";
-
 import Header from "../../components/Header";
-import FirstLayer from "../../components/FirstLayer";
-import AddProduct from "../../components/AddProduct";
 import Sidenav from "../../components/Sidenav";
 
 const AdminAddProduct = () => {
@@ -10,8 +7,6 @@ const AdminAddProduct = () => {
     <>
       <Sidenav />
       <Header />
-      <FirstLayer />
-      <AddProduct />
     </>
   );
 };

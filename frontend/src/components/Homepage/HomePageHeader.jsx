@@ -12,9 +12,6 @@ import {
   Badge,
 } from "@mui/material";
 import { Search as SearchIcon, ShoppingCart } from "@mui/icons-material";
-import { IoPersonOutline, IoSettingsOutline } from "react-icons/io5";
-import { FiDollarSign } from "react-icons/fi";
-import { FaPowerOff } from "react-icons/fa";
 
 const Header = () => {
   const [dropdownMenu, setdropdownMenu] = useState(false);
