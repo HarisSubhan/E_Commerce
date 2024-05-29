@@ -1,6 +1,6 @@
 body {
   overflow-x: hidden !important;
-  background-color: #eef0fc;
+  background-color: #eef0fc !important;
 }
 
 .dropdownmenu {
