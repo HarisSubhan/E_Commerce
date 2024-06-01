@@ -34,7 +34,7 @@ export default function FadeMenu() {
           alt=""
           onClick={handleClick}
         />
-        <div className="flex-column maria align-items-center">
+        <div className="flex-column text-white maria align-items-center">
           <p className="p-0 m-0">Maria Gibson</p>
           <p className="p-0 m-0">Admin</p>
         </div>

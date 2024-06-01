@@ -1,7 +1,8 @@
-// const express = require("express");
-// const { adminAddProduct } = require("../controllers/adminAddProduct");
-// const router = express.Router();
+const express = require("express");
+const { adminAddProduct } = require("../controllers/adminProduct");
 
-// router.post("/admin-add-product", adminAddProduct);
+const router = express.Router();
 
-// module.exports = router;
+router.post("/admin-add-product", adminAddProduct);
+
+module.exports = router;

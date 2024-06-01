@@ -1,8 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { CardData } from "../data/sidebarData";
+import { CardData } from "../../data/CardData";
 
-export const SecondLayer = () => {
+const SecondLayer = () => {
   return (
     <>
       <div className="d-flex thirdlayer justify-content-between p-4 ">
@@ -27,3 +27,5 @@ export const SecondLayer = () => {
     </>
   );
 };
+
+export default SecondLayer;

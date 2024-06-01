@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Calendar from "./Calendar";
-import date from "../components/Calendar";
+import Calendar from "../Calendar";
+import date from "../Calendar";
 import "react-calendar/dist/Calendar.css";
 
 const FirstLayer = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUser from "../HeaderUser";
+import HeaderUser from "../../components/adminhomepage/HeaderUser";
 import {
   AppBar,
   Toolbar,

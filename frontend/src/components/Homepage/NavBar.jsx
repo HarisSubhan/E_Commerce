@@ -4,7 +4,6 @@ import Test from "../Homepage/Test";
 import { FaStarOfDavid } from "react-icons/fa";
 import { Box } from "@mui/material";
 import { MdList } from "react-icons/md";
-import { useState } from "react";
 
 function ColorSchemesExample() {
   return (
