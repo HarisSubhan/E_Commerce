@@ -1,8 +1,17 @@
-import { Button, Select } from "@mui/material";
-import React, { useState } from "react";
+import { Button } from "@mui/material";
+import React from "react";
 import { Form } from "react-bootstrap";
 
-export const FormField = () => {
+export const FormField = ({
+  handleAddProduct,
+  setPreviewUrl,
+  previewUrl,
+  image,
+  setImage,
+  handleClose,
+  uploadImage,
+  handleImageChange,
+}) => {
   return (
     <>
       <div className="FormField p-3  ">
@@ -54,7 +63,9 @@ export const FormField = () => {
           </Form.Select>
         </div>
         <div className="d-flex gap-3 mt-3">
-          <Button variant="contained">Add Product</Button>
+          <Button onClick={handleAddProduct} variant="contained">
+            Add Product
+          </Button>
           <Button className="border">Save Product</Button>
         </div>
       </div>

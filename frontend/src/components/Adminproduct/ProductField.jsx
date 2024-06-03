@@ -1,15 +1,11 @@
 import React from "react";
 
-const ProductField = () => {
+const ProductField = ({ previewUrl }) => {
   return (
     <>
       <div>
         <div>
-          <img
-            width={350}
-            src="https://mannatthemes.com/robotech/default/assets/images/products/pro-3.png"
-            alt=""
-          />
+          <img width={350} src={previewUrl} alt="" />
         </div>
         <div className="mt-3">
           <p className="p-0 m-0">Product Title</p>

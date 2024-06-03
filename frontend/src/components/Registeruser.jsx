@@ -4,17 +4,32 @@ import { BiCheckbox } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { regUser, reset } from "../features/auth/authSlice";
 import toast from "react-hot-toast";
-const Registeruser = () => {
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+const Registeruser = ({ SetShowForm }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { isError, message } = useSelector((state) => state.auth);
+  const { isError, message, isSuccess, user } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
+    if (isSuccess) {
+      navigate("/homePage");
+    }
     dispatch(reset());
   }, [isError]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Account Register");
+    }
+    dispatch(reset());
+  }, [isSuccess]);
 
   const [formFields, setFormFields] = useState({
     username: "",
@@ -129,7 +144,7 @@ const Registeruser = () => {
             </Button>
             <div className="log d-flex justify-content-center mt-3">
               <p>Already have an account ?</p>
-              login
+              <Link to="/login">Log In</Link>
             </div>
           </div>
         </Card>

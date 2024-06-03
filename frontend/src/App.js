@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/websitehomepage/HomePage.jsx";
 import Registeruser from "../src/components/Registeruser.jsx";
+import SignupUser from "../src/components/SignupUser.jsx";
 import AdminAddProduct from "./pages/adminpanelpages/AdminAddProduct.jsx";
 import Customers from "./pages/adminpanelpages/Customers.jsx";
 import Orders from "./pages/adminpanelpages/Orders.jsx";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/admin-product-details" element={<ProductDetail />} />
           <Route path="/admin-refunds" element={<Refunds />} />
           <Route path="/register-user" element={<Registeruser />} />
+          <Route path="/login" element={<SignupUser />} />
           <Route path="*" element="No Page Found" />
         </Routes>
       </Router>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HeaderUser from "../../components/adminhomepage/HeaderUser";
+
 import {
   AppBar,
   Toolbar,
@@ -10,6 +11,7 @@ import {
   InputAdornment,
   Box,
   Badge,
+  Button,
 } from "@mui/material";
 import { Search as SearchIcon, ShoppingCart } from "@mui/icons-material";
 
@@ -113,7 +115,9 @@ const Header = () => {
             sx={{ display: "flex", alignItems: "center", marginLeft: "16px" }}
           >
             <div className="d-flex gap-4">
-              <HeaderUser />
+              <Button>Login In </Button>
+              <Button>Sing Up</Button>
+              {/* <HeaderUser /> */}
             </div>
           </Box>
         </Box>

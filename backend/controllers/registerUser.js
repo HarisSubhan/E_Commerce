@@ -56,7 +56,19 @@ const authlogin = AsyncHandler(async (req, res) => {
   }
 });
 
+const findMyProfile = AsyncHandler(async (req, res) => {
+  const user_id = req.params.id;
+  const foundUser = await User.findOne({ _id: user_id });
+  if (!foundUser) {
+    res.send(400);
+    throw new Error("user Not Found");
+  } else {
+    res.send(foundUser);
+  }
+});
+
 module.exports = {
   authregister,
   authlogin,
+  findMyProfile,
 };

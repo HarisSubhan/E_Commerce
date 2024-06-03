@@ -1,25 +1,16 @@
 import React, { useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
+import axios from "axios";
 
-const InputField = () => {
-  const [image, setImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null); // Use a descriptive name
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (!file) return; // Handle empty file selection
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (e) => setPreviewUrl(e.target.result);
-    setImage(file);
-  };
-
-  const handleClose = () => {
-    setImage(null);
-    setPreviewUrl(null); // Clear preview and state
-  };
-
+const InputField = ({
+  setPreviewUrl,
+  previewUrl,
+  image,
+  setImage,
+  handleClose,
+  uploadImage,
+  handleImageChange,
+}) => {
   return (
     <>
       <div

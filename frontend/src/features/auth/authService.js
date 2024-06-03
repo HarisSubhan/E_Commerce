@@ -9,3 +9,11 @@ export const registerUser = async (userData) => {
   }
   return responce.data;
 };
+
+export const loginUser = async (userData) => {
+  const responce = await axios.post(`${base_url}/auth-login`, userData);
+  if (responce.data) {
+    localStorage.setItem("user", JSON.stringify(responce.data));
+  }
+  return responce.data;
+};

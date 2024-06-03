@@ -41,4 +41,14 @@ export const Sidebar = [
     name: "Refunds",
     icon: <CiHome />,
   },
+  {
+    path: "/register-user",
+    name: "Register",
+    icon: <CiHome />,
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    icon: <CiHome />,
+  },
 ];

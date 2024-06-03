@@ -22,9 +22,7 @@ const FirstLayer = () => {
             Today :15-25-1998
             {/* Today : {date.toLocaleDateString()} */}
           </Button>
-          {dropdownMenu2 && (
-            <Calendar className=" position-absolute " value={date} />
-          )}
+          {dropdownMenu2 && <Calendar className="" value={date} />}
         </div>
       </div>
     </>
