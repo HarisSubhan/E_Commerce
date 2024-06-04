@@ -1,26 +1,37 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-export const FormField = ({
+export const FormAddProduct = ({
   handleAddProduct,
-  setPreviewUrl,
-  previewUrl,
-  image,
-  setImage,
-  handleClose,
-  uploadImage,
-  handleImageChange,
+  formFields,
+  setFormFields,
 }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
+  };
   return (
     <>
-      <div className="FormField p-3  ">
+      <div className="p-3">
         <div>
-          <Form.Control className="" placeholder="Title" />
+          <Form.Control
+            onChange={handleChange}
+            value={formFields.title}
+            name="title"
+            placeholder="Title"
+          />
         </div>
         <div className="mt-3">
           <label>All Category</label>
-          <Form.Select>
+          <Form.Select
+            onChange={handleChange}
+            value={formFields.category}
+            name="category"
+          >
             <option>All Category</option>
             <option>Electronic</option>
             <option>Mobile</option>
@@ -29,21 +40,40 @@ export const FormField = ({
         </div>
         <div className="mt-3">
           <label>Description</label>
-          <Form.Control placeholder="Description" />
+          <Form.Control
+            onChange={handleChange}
+            value={formFields.description}
+            name="description"
+            placeholder="Description"
+          />
         </div>
         <div className="d-flex mt-3">
           <div className="w-100">
             <label>Product Date</label>
-            <Form.Control placeholder="Product Date" />
+            <Form.Control
+              onChange={handleChange}
+              value={formFields.date}
+              name="date"
+              placeholder="Product Date"
+            />
           </div>
           <div className="w-100">
             <label>Price</label>
-            <Form.Control placeholder="Price" />
+            <Form.Control
+              onChange={handleChange}
+              value={formFields.price}
+              name="price"
+              placeholder="Price"
+            />
           </div>
         </div>
         <div className="mt-3">
           <label>Gender</label>
-          <Form.Select>
+          <Form.Select
+            onChange={handleChange}
+            value={formFields.gender}
+            name="gender"
+          >
             <option>Gender</option>
             <option>Male</option>
             <option>Female</option>
@@ -53,7 +83,11 @@ export const FormField = ({
         </div>
         <div className="mt-3">
           <label>Size</label>
-          <Form.Select>
+          <Form.Select
+            onChange={handleChange}
+            value={formFields.size}
+            name="size"
+          >
             <option>Size</option>
             <option>SM</option>
             <option>MD</option>

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
-import axios from "axios";
 
 const InputField = ({
   setPreviewUrl,
