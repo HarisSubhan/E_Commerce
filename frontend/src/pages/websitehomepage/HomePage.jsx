@@ -4,6 +4,7 @@ import NavBar from "../../components/Homepage/NavBar";
 import Body from "../../components/Homepage/Body";
 import ShoesCollection from "../../components/Homepage/ShoesCollection";
 import ProductCollection from "../../components/Homepage/ProductCollection";
+import Silder from "../../components/Homepage/Silder";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Body />
       <ShoesCollection />
       <ProductCollection />
+      <Silder />
     </>
   );
 };

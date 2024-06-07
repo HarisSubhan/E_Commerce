@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import HeaderUser from "../../components/adminhomepage/HeaderUser";
-
 import {
   AppBar,
   Toolbar,
@@ -11,13 +9,11 @@ import {
   InputAdornment,
   Box,
   Badge,
-  Button,
 } from "@mui/material";
 import { Search as SearchIcon, ShoppingCart } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [dropdownMenu, setdropdownMenu] = useState(false);
-  const click = () => setdropdownMenu(!dropdownMenu);
   const [category, setCategory] = useState("all");
 
   const handleCategoryChange = (event) => {
@@ -31,25 +27,24 @@ const Header = () => {
       color="transparent"
       elevation={0}
     >
-      <Toolbar
-        className="toolbar"
-        sx={{ display: "flex", justifyContent: "space-between" }}
-      >
-        <Box className="image" sx={{ display: "flex", alignItems: "center" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <img
+            className="logo"
             src="https://mannatthemes.com/robotech/default/assets/images/logo-sm.png"
             alt="Logo"
             style={{ height: "40px", marginRight: "16px" }}
           />
           <img
-            src="https://mannatthemes.com/robotech/default/assets/images/logo-dark.png  "
+            className="logo"
+            src="https://mannatthemes.com/robotech/default/assets/images/logo-dark.png"
             alt="Logo"
             style={{ height: "40px", marginRight: "16px" }}
           />
         </Box>
 
         <Box
-          className="search-bar "
+          className="search-bar"
           sx={{
             display: "flex",
             alignItems: "center",
@@ -64,7 +59,7 @@ const Header = () => {
             placeholder="I'm shopping for..."
             fullWidth
             sx={{
-              "&   .MuiOutlinedInput-root": {
+              "& .MuiOutlinedInput-root": {
                 "& fieldset": {
                   border: "none",
                 },
@@ -100,24 +95,22 @@ const Header = () => {
                   </IconButton>
                 </InputAdornment>
               ),
-              startAdornment: <InputAdornment position="end"></InputAdornment>,
             }}
           />
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <div className="cart">
-            <Badge color="primary">
-              <ShoppingCart />
-            </Badge>
-          </div>
+          <Badge color="primary">
+            <ShoppingCart />
+          </Badge>
           <Box
             sx={{ display: "flex", alignItems: "center", marginLeft: "16px" }}
           >
             <div className="d-flex gap-4">
-              <Button>Login In </Button>
-              <Button>Sing Up</Button>
-              {/* <HeaderUser /> */}
+              <Link className="text-decoration: none" to="/login">
+                Login
+              </Link>
+              <Link to="/register-user">Sign Up</Link>
             </div>
           </Box>
         </Box>

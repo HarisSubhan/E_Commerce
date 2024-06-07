@@ -15,7 +15,7 @@ const SignupUser = ({ SetShowForm2 }) => {
       toast.error(message);
     }
     if (isSuccess) {
-      navigate("/homepage");
+      navigate("/");
     }
     dispatch(reset());
   }, [dispatch, isError, isSuccess, message, navigate]);

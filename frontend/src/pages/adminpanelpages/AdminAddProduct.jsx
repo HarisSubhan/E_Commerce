@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidenav from "../../components/adminhomepage/Sidenav";
 import { Col, Row } from "react-bootstrap";
 import AppHeader from "../../components/adminhomepage/AppHeader";
@@ -7,8 +7,13 @@ import InputField from "../../components/Adminproduct/InputField";
 import { FormAddProduct } from "../../components/Adminproduct/FormAddProduct";
 import ProductField from "../../components/Adminproduct/ProductField";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { uploadAddProduct } from "../../features/addProduct/addProductSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getProductData,
+  productReset,
+  uploadAddProduct,
+} from "../../features/addProduct/addProductSlice";
+import toast from "react-hot-toast";
 
 const AdminAddProduct = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -16,6 +21,33 @@ const AdminAddProduct = () => {
   const [imageLoading, setImageLoading] = useState(false);
 
   const dispatch = useDispatch();
+
+  const { productSuccess, productMessage, productError, message } = useSelector(
+    (state) => state.product
+  );
+
+  useEffect(() => {
+    if (productSuccess) {
+      toast.success(productMessage);
+    } else {
+      dispatch(getProductData());
+    }
+    dispatch(productReset());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (productSuccess) {
+      toast.success(productMessage);
+    }
+    dispatch(productReset());
+  }, [productSuccess, productMessage]);
+
+  useEffect(() => {
+    if (productError) {
+      toast.error(message);
+    }
+    dispatch(productReset());
+  }, [productError]);
 
   const [formFields, setFormFields] = useState({
     title: "",
@@ -65,7 +97,9 @@ const AdminAddProduct = () => {
 
   const handleAddProduct = async () => {
     if (!image) {
+      toast.error("Please select an image");
       console.error("Please select an image before adding product");
+
       return;
     }
 
@@ -88,7 +122,6 @@ const AdminAddProduct = () => {
     };
     try {
       dispatch(uploadAddProduct(productData));
-      console.log("Product added successfully");
     } catch (error) {
       console.error("Error adding product:", error);
     }

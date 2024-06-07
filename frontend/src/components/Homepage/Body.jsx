@@ -44,7 +44,7 @@ const Body = () => {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="https://mannatthemes.com/robotech/default/assets/images/products/pro-4.png"
+                  src="https://mannatthemes.com/robotech/default/assets/images/products/pro-3.png"
                   alt="Second slide"
                 />
               </Carousel.Item>

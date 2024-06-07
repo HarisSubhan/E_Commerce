@@ -1,12 +1,15 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { ColorRing } from "react-loader-spinner";
+import { useEffect } from "react";
 
 export const FormAddProduct = ({
   handleAddProduct,
   formFields,
   setFormFields,
 }) => {
+  const { productLoading } = useSelector((state) => state.product);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields((prevFields) => ({
@@ -14,6 +17,11 @@ export const FormAddProduct = ({
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    console.log("productLoading state:", productLoading);
+  }, [productLoading]);
+
   return (
     <>
       <div className="p-3">
@@ -25,6 +33,7 @@ export const FormAddProduct = ({
             placeholder="Title"
           />
         </div>
+        <div></div>
         <div className="mt-3">
           <label>All Category</label>
           <Form.Select
@@ -98,7 +107,19 @@ export const FormAddProduct = ({
         </div>
         <div className="d-flex gap-3 mt-3">
           <Button onClick={handleAddProduct} variant="contained">
-            Add Product
+            {productLoading ? (
+              <ColorRing
+                visible={true}
+                height="30"
+                width="30"
+                ariaLabel="color-ring-loading"
+                wrapperStyle={{}}
+                wrapperClass="color-ring-wrapper"
+                colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+              />
+            ) : (
+              "Add Product"
+            )}
           </Button>
           <Button className="border">Save Product</Button>
         </div>

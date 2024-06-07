@@ -1,5 +1,7 @@
 const AsyncHandler = require("express-async-handler");
 const addProduct = require("../model/AddProductModel");
+const addCategory = require("../model/AddCategoryModel");
+
 const adminAddProduct = AsyncHandler(async (req, res) => {
   const { image, title, category, description, date, price, gender, size } =
     req.body;
@@ -15,7 +17,7 @@ const adminAddProduct = AsyncHandler(async (req, res) => {
     !size
   ) {
     res.status(400);
-    throw new Error("Enter The Relavant Field");
+    throw new Error("Enter The Relevant Field");
   } else {
     try {
       const createAddProduct = await addProduct.create({
@@ -35,4 +37,37 @@ const adminAddProduct = AsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { adminAddProduct };
+const adminAddCategory = AsyncHandler(async (req, res) => {
+  const { categoryname, categorydescription } = req.body;
+
+  if (!categoryname) {
+    res.status(400);
+    throw new Error("Enter a Category Name");
+  } else {
+    try {
+      const createAddCategory = await addCategory.create({
+        categoryname,
+        categorydescription,
+      });
+      res.send(createAddCategory);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
+
+const getAllCategorys = AsyncHandler(async (req, res) => {
+  const allCategorys = await addCategory.find();
+  res.send(allCategorys);
+});
+const getAllProducts = AsyncHandler(async (req, res) => {
+  const allProducts = await addProduct.find();
+  res.send(allProducts);
+});
+
+module.exports = {
+  adminAddProduct,
+  adminAddCategory,
+  getAllCategorys,
+  getAllProducts,
+};

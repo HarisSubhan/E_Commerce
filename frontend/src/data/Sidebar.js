@@ -7,6 +7,11 @@ export const Sidebar = [
     icon: <CiHome />,
   },
   {
+    path: "/admin-add-category",
+    name: "Admin-Add-Category",
+    icon: <CiHome />,
+  },
+  {
     path: "/admin-Products",
     name: "Products",
     icon: <CiHome />,

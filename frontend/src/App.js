@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/websitehomepage/HomePage.jsx";
@@ -14,6 +15,7 @@ import ProductDetail from "./pages/adminpanelpages/ProductDetail.jsx";
 import Refunds from "./pages/adminpanelpages/Refunds.jsx";
 import AdminHomePage from "./pages/adminpanelpages/AdminHomePage.jsx";
 import AdminProducts from "./pages/adminpanelpages/AdminProducts.jsx";
+import AdminAddCategory from "./pages/adminpanelpages/AdminAddCategory.jsx";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<AdminHomePage />} />
           <Route path="/admin-add-product" element={<AdminAddProduct />} />
+          <Route path="/admin-add-category" element={<AdminAddCategory />} />
           <Route path="/admin-products" element={<AdminProducts />} />
           <Route path="/admin-customers" element={<Customers />} />
           <Route path="/admin-orders" element={<Orders />} />

@@ -60,6 +60,11 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
+  .logo {
+    width: 50px;
+    height: 30px;
+    object-fit: contain;
+  }
   .thirdlayer {
     flex-direction: column;
   }

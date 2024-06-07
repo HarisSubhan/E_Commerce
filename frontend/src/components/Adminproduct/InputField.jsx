@@ -1,15 +1,7 @@
 import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
 
-const InputField = ({
-  setPreviewUrl,
-  previewUrl,
-  image,
-  setImage,
-  handleClose,
-  uploadImage,
-  handleImageChange,
-}) => {
+const InputField = ({ previewUrl, handleClose, handleImageChange }) => {
   return (
     <>
       <div
