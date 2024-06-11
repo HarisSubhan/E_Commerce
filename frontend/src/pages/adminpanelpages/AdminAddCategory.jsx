@@ -3,10 +3,11 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import Sidenav from "../../components/adminhomepage/Sidenav";
 import AppHeader from "../../components/adminhomepage/AppHeader";
 import FirstLayer from "../../components/adminhomepage/FirstLayer";
-import { Box, Paper, TableBody, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 import {
+  deleteCategory,
   getCategorysData,
   productReset,
   uploadAddcategory,
@@ -73,6 +74,10 @@ const AdminAddCategory = () => {
     }
   };
 
+  const handleDeleteCategory = (id) => {
+    dispatch(deleteCategory(id));
+  };
+
   return (
     <>
       <Row className="d-flex">
@@ -114,7 +119,7 @@ const AdminAddCategory = () => {
               </Card>
             </Col>
             <Col xl={8} lg={12} md={12}>
-              <GetCategory />
+              <GetCategory deleteCategory={handleDeleteCategory} />
             </Col>
           </Row>
         </Col>

@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  customersReset,
-  getCustomersData,
-} from "../features/customers/customersSlice";
+import { useSelector } from "react-redux";
+
+import { PiPencilLight } from "react-icons/pi";
+import { MdDelete } from "react-icons/md";
 
 const CustomersRecord = () => {
   const { customers } = useSelector((state) => state.customers);
@@ -34,8 +32,15 @@ const CustomersRecord = () => {
                     <tr>
                       <th scope="row">{index + 1}</th>
                       <td>{customers?.username}</td>
-                      <td>{customers?.useremail}</td>
                       <td>{customers?.mobilenumber}</td>
+                      <td>{customers?.useremail}</td>
+                      <td
+                        style={{ cursor: "pointer" }}
+                        className="gap-3 d-flex "
+                      >
+                        <PiPencilLight size={25} />
+                        <MdDelete color="#FF3C78" size={25} />
+                      </td>
                     </tr>
                   </>
                 );

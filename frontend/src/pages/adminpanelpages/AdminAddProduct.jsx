@@ -29,15 +29,6 @@ const AdminAddProduct = () => {
   useEffect(() => {
     if (productSuccess) {
       toast.success(productMessage);
-    } else {
-      dispatch(getProductData());
-    }
-    dispatch(productReset());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (productSuccess) {
-      toast.success(productMessage);
     }
     dispatch(productReset());
   }, [productSuccess, productMessage]);

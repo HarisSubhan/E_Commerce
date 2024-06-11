@@ -11,8 +11,9 @@ const addProductSchema = mongoose.Schema(
       required: [true, "Please Enter The Product Name"],
     },
     category: {
-      type: "string",
-      required: [true, "Please Enter The Product Category"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AddCategory",
+      required: true,
     },
     description: {
       type: "string",

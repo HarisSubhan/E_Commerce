@@ -9,7 +9,8 @@ export const FormAddProduct = ({
   formFields,
   setFormFields,
 }) => {
-  const { productLoading } = useSelector((state) => state.product);
+  const { productLoading, category } = useSelector((state) => state.product);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields((prevFields) => ({
@@ -17,10 +18,6 @@ export const FormAddProduct = ({
       [name]: value,
     }));
   };
-
-  useEffect(() => {
-    console.log("productLoading state:", productLoading);
-  }, [productLoading]);
 
   return (
     <>
@@ -41,12 +38,31 @@ export const FormAddProduct = ({
             value={formFields.category}
             name="category"
           >
-            <option>All Category</option>
-            <option>Electronic</option>
-            <option>Mobile</option>
-            <option>Clothes</option>
+            <option value="">All Category</option>
+            {category?.map((categoryItem) => (
+              <option key={categoryItem._id} value={categoryItem._id}>
+                {categoryItem.categoryname}
+              </option>
+            ))}
           </Form.Select>
         </div>
+        {/* <div className="mt-3">
+          <label>All Category</label>
+          <Form.Select
+            onChange={handleChange}
+            value={formFields.category}
+            name="category"
+          >
+            <option>All Category</option>
+            {category?.map((category, index) => {
+              return (
+                <>
+                  <option>{category?.categoryname}</option>
+                </>
+              );
+            })}
+          </Form.Select>
+        </div> */}
         <div className="mt-3">
           <label>Description</label>
           <Form.Control
@@ -83,7 +99,6 @@ export const FormAddProduct = ({
             value={formFields.gender}
             name="gender"
           >
-            <option>Gender</option>
             <option>Male</option>
             <option>Female</option>
             <option>Children</option>

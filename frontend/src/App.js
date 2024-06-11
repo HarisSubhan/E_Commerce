@@ -16,6 +16,7 @@ import Refunds from "./pages/adminpanelpages/Refunds.jsx";
 import AdminHomePage from "./pages/adminpanelpages/AdminHomePage.jsx";
 import AdminProducts from "./pages/adminpanelpages/AdminProducts.jsx";
 import AdminAddCategory from "./pages/adminpanelpages/AdminAddCategory.jsx";
+import CustomersDetails from "./pages/adminpanelpages/CustomersDetails.jsx";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
           <Route path="/admin-add-category" element={<AdminAddCategory />} />
           <Route path="/admin-products" element={<AdminProducts />} />
           <Route path="/admin-customers" element={<Customers />} />
+          <Route
+            path="/admin-customers-details"
+            element={<CustomersDetails />}
+          />
           <Route path="/admin-orders" element={<Orders />} />
           <Route path="/admin-orders-details" element={<OrdersDetail />} />
           <Route path="/admin-product-details" element={<ProductDetail />} />

@@ -65,9 +65,41 @@ const getAllProducts = AsyncHandler(async (req, res) => {
   res.send(allProducts);
 });
 
+const deleteCategory = AsyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const category = await addCategory.findByIdAndDelete(id);
+    if (!category) {
+      res.status(404);
+      throw new Error("Category not found");
+    }
+    res.send({ message: "Category removed" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+const deleteProduct = AsyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await addProduct.findByIdAndDelete(id);
+    if (!product) {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+    res.send({ message: "Product removed" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = {
   adminAddProduct,
   adminAddCategory,
   getAllCategorys,
   getAllProducts,
+  deleteCategory,
+  deleteProduct,
 };

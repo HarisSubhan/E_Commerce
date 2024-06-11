@@ -1,4 +1,5 @@
 import { CiHome } from "react-icons/ci";
+import AdminHomePage from "../pages/adminpanelpages/AdminHomePage";
 
 export const Sidebar = [
   {
@@ -27,6 +28,11 @@ export const Sidebar = [
     icon: <CiHome />,
   },
   {
+    path: "/admin-customers-details",
+    name: "Customers Details",
+    icon: <CiHome />,
+  },
+  {
     path: "/admin-orders",
     name: "Orders",
     icon: <CiHome />,
@@ -44,6 +50,11 @@ export const Sidebar = [
   {
     path: "/admin-refunds",
     name: "Refunds",
+    icon: <CiHome />,
+  },
+  {
+    path: "/",
+    name: "Home",
     icon: <CiHome />,
   },
   {

@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import AppHeader from "../../components/adminhomepage/AppHeader";
 import FirstLayer from "../../components/adminhomepage/FirstLayer";
 import SelectOption from "../../components/adminlistproduct/SelectOption";
-import CustomersRecord from "../../components/CustomersRecord";
+import CustomersRecord from "../../components/admin-customers/CustomersRecord";
 import toast from "react-hot-toast";
 import {
   customersReset,

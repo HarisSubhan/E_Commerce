@@ -36,11 +36,11 @@ const Sidenav = ({ Children }) => {
             <NavLink
               to={item.path}
               key={index}
-              clasName="link"
+              clasName="link "
               activeClassName="active"
             >
               <div className="d-flex  align-items-center gap-2 text-white fs-4 mt-3">
-                <div className="icon ">{item.icon}</div>
+                <div className="icon  ">{item.icon}</div>
                 <div className="link_text">{item.name}</div>
               </div>
             </NavLink>
