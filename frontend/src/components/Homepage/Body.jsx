@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Carousel from "react-bootstrap/Carousel";
 import Col from "react-bootstrap/Col";
 

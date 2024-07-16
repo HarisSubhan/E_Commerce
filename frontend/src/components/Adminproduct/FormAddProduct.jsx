@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { ColorRing } from "react-loader-spinner";
-import { useEffect } from "react";
 
 export const FormAddProduct = ({
   handleAddProduct,
