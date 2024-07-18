@@ -1,30 +1,31 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import { CardData } from "../../data/CardData";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const SecondLayer = () => {
   return (
-    <>
-      <div className="d-flex thirdlayer justify-content-between p-4 ">
-        {CardData?.map((item, index) => {
-          return (
-            <Card className="card p-5">
-              <div className="d-flex gap-5 justify-content-between ">
-                <div className="first">
-                  <p>{item?.title}</p>
-                  <p>{item?.order}</p>
+    <div className="p-4">
+      <Row className="g-3">
+        {CardData?.map((item, index) => (
+          <Col xs={12} sm={6} md={4} lg={3} key={index}>
+            <Card className="h-100 p-3">
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <p className="mb-1">{item?.title}</p>
+                  <p className="mb-1">{item?.order}</p>
                 </div>
-                <div className="d-flex">{item.icon}</div>
+                <div>{item.icon}</div>
               </div>
-              <div className="d-flex gap-3 mt-3 ">
-                <p>{item?.data}</p>
-                <p>{item?.session}</p>
+              <div className="d-flex gap-3 mt-3">
+                <p className="mb-0">{item?.data}</p>
+                <p className="mb-0">{item?.session}</p>
               </div>
             </Card>
-          );
-        })}
-      </div>
-    </>
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 };
 
