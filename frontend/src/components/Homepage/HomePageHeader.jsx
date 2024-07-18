@@ -31,13 +31,13 @@ const Header = () => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <img
             className="logo"
-            src="https://mannatthemes.com/robotech/default/assets/images/logo-sm.png"
+            src="https://png.pngtree.com/png-vector/20220207/ourmid/pngtree-e-letter-logo-ecommerce-shop-store-design-png-image_4381099.png"
             alt="Logo"
             style={{ height: "40px", marginRight: "16px" }}
           />
           <img
             className="logo"
-            src="https://mannatthemes.com/robotech/default/assets/images/logo-dark.png"
+            src="https://e7.pngegg.com/pngimages/480/581/png-clipart-logo-e-commerce-digital-marketing-brand-trade-ecommerce-text-service.png"
             alt="Logo"
             style={{ height: "40px", marginRight: "16px" }}
           />

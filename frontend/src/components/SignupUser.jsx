@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { BiCheckbox } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { logUser, regUser, reset } from "../features/auth/authSlice";
+import { logUser, reset } from "../features/auth/authSlice";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 const SignupUser = ({ SetShowForm2 }) => {

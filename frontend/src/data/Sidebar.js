@@ -1,5 +1,4 @@
 import { CiHome } from "react-icons/ci";
-import AdminHomePage from "../pages/adminpanelpages/AdminHomePage";
 
 export const Sidebar = [
   {

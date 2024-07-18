@@ -5,7 +5,7 @@ import Body from "../../components/Homepage/Body";
 import ShoesCollection from "../../components/Homepage/ShoesCollection";
 import ProductCollection from "../../components/Homepage/ProductCollection";
 import Silder from "../../components/Homepage/Silder";
-import HomeFooter from "../../components/Homepage/HomeFooter";
+
 import FourBoxSection from "../../components/Homepage/FourBoxSection";
 
 const HomePage = () => {
@@ -18,7 +18,6 @@ const HomePage = () => {
       <ProductCollection />
       <FourBoxSection />
       <Silder />
-      <HomeFooter />
     </>
   );
 };

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
+import React from "react";
 import { Box, Button } from "@mui/material";
-import { BsList } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { IoMoonOutline } from "react-icons/io5";
 import { CiBellOn } from "react-icons/ci";

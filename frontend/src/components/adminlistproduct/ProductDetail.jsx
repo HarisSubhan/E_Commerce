@@ -7,13 +7,10 @@ import {
   deleteProduct,
   getCategorysData,
   getProductData,
-  productReset,
 } from "../../features/addProduct/addProductSlice";
-import toast from "react-hot-toast";
 
 const ProductDetail = () => {
-  const { product, category, productSuccess, productMessage, productError } =
-    useSelector((state) => state.product);
+  const { product, category } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategorysData());

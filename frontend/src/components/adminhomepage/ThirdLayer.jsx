@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import CircleChart from "./CircleChart";
-import LineChartCard from "./LineChartCard";
 
 const ThirdLayer = () => {
   return (

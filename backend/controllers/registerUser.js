@@ -1,8 +1,7 @@
 const AsyncHandler = require("express-async-handler");
 const User = require("../model/userModle");
-
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
 const authregister = AsyncHandler(async (req, res) => {
   const { username, useremail, password, mobilenumber } = req.body;
 
@@ -26,7 +25,14 @@ const authregister = AsyncHandler(async (req, res) => {
         password: hashedPass,
         mobilenumber,
       });
-      res.send(createUser);
+      res.json({
+        _id: createUser._id,
+        username: createUser.username,
+        useremail: createUser.useremail,
+        password: createUser.password,
+        mobilenumber: createUser.mobilenumber,
+        token: generateToken(createUser._id),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +57,14 @@ const authlogin = AsyncHandler(async (req, res) => {
       res.status(401);
       throw new Error("Invalid Password");
     } else {
-      res.send(findUser);
+      res.json({
+        _id: findUser._id,
+        username: findUser.username,
+        useremail: findUser.useremail,
+        password: findUser.password,
+        mobilenumber: findUser.mobilenumber,
+        token: generateToken(findUser._id),
+      });
     }
   }
 });
@@ -66,6 +79,12 @@ const findMyProfile = AsyncHandler(async (req, res) => {
     res.send(foundUser);
   }
 });
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECERT, {
+    expiresIn: "1d",
+  });
+};
 
 module.exports = {
   authregister,
