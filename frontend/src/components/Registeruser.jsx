@@ -10,9 +10,7 @@ const Registeruser = ({ SetShowForm }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isError, message, isSuccess, user } = useSelector(
-    (state) => state.auth
-  );
+  const { isError, message, isSuccess } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isError) {

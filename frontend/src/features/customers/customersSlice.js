@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllCustomers } from "./customersService";
+import { getAllCustomers, getCustomerProfile } from "./customersService";
 const initialState = {
   customers: [],
   customersLoading: false,
@@ -13,6 +13,17 @@ export const getCustomersData = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       return await getAllCustomers();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.responce.data);
+    }
+  }
+);
+
+export const CustomerProfile = createAsyncThunk(
+  "customer/get-customers-profile",
+  async (_, thunkAPI) => {
+    try {
+      return await getCustomerProfile();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.responce.data);
     }
@@ -41,6 +52,19 @@ export const customersSlice = createSlice({
         state.customersMessage = "Failed to fetch customers";
       })
       .addCase(getCustomersData.fulfilled, (state, action) => {
+        state.customersLoading = false;
+        state.customersSuccess = true;
+        state.customers = action.payload;
+      })
+      .addCase(CustomerProfile.pending, (state) => {
+        state.customersLoading = true;
+      })
+      .addCase(CustomerProfile.rejected, (state, action) => {
+        state.customersLoading = false;
+        state.customersError = true;
+        state.customersMessage = "Failed to fetch customers";
+      })
+      .addCase(CustomerProfile.fulfilled, (state, action) => {
         state.customersLoading = false;
         state.customersSuccess = true;
         state.customers = action.payload;

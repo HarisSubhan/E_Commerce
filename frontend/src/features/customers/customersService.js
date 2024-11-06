@@ -5,3 +5,10 @@ export const getAllCustomers = async () => {
   const response = await axios.get(`${base_url}/get-customers-records`);
   return response.data;
 };
+
+export const getCustomerProfile = async (customerId) => {
+  const response = await axios.get(
+    `${base_url}/customers-profile/${customerId}`
+  );
+  return response.data;
+};

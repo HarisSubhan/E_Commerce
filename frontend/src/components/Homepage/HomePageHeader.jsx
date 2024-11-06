@@ -33,6 +33,10 @@ const Header = () => {
     setShow(null);
   };
 
+  const handleClickProfile = () => {
+    nav("/customers-profile");
+  };
+
   const handleLogOut = async () => {
     try {
       const result = await dispatch(logOut()).unwrap(); // Dispatch the logout action and unwrap the result
@@ -174,7 +178,7 @@ const Header = () => {
                     onClose={handleClose}
                     TransitionComponent={Fade}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClickProfile}>Profile</MenuItem>
                     <MenuItem onClick={handleClose}>Invoice</MenuItem>
                     <MenuItem onClick={handleLogOut}>Sign Out</MenuItem>
                   </Menu>
