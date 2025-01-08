@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./HomePageHeader";
 import NavBar from "./NavBar";
 import { Button, Card, Col, Table } from "react-bootstrap";
-import { Box } from "@mui/material";
 import { IoLocation } from "react-icons/io5";
 import { IoMdMailUnread } from "react-icons/io";
 import { IoMdCall } from "react-icons/io";
