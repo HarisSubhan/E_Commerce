@@ -71,7 +71,7 @@ const Header = () => {
   };
 
   const handlePlaceOrder = () => {
-    nav("/customers-checkout/:id");
+    nav("/customers-checkout");
   };
 
   return (

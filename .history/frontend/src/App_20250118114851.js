@@ -42,7 +42,7 @@ function App() {
           <Route path="/register-user" element={<Registeruser />} />
           <Route path="/login" element={<SignupUser />} />
           <Route path="/customers-profile" element={<CustomerProfile />} />
-          <Route path="/product-detail/:id" element={<ProductDetail />} />
+          <Route path="/product-detail/:id" element={<Product Detail />} />
           <Route path="/customers-products" element={<Customersproducts />} />
           <Route path="/customers-wishlist" element={<CustomersWishlist />} />
           <Route

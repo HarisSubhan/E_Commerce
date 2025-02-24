@@ -17,10 +17,12 @@ import {
 import { Search as SearchIcon, ShoppingCart } from "@mui/icons-material";
 // import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { logOut } from "../../features/auth/authSlice";
 
 const Header = () => {
+  const { id } = useParams();
+
   const nav = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);

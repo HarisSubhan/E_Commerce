@@ -40,9 +40,7 @@ const Header = () => {
     setShow(null);
   };
 
-  const handleCartClose = () => {
-    setAnchorEl(null);
-  };
+  const handle
 
   const handleClickProfile = () => {
     nav("/customers-profile");
@@ -71,7 +69,7 @@ const Header = () => {
   };
 
   const handlePlaceOrder = () => {
-    nav("/customers-checkout/:id");
+    nav("/customers-profile");
   };
 
   return (

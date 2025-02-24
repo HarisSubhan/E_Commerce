@@ -47,7 +47,7 @@ function App() {
           <Route path="/customers-wishlist" element={<CustomersWishlist />} />
           <Route
             path="/customers-checkout/:id"
-            element={<CustomersCheckout />}
+            element={<CustomersCheckout />}9
           />
           <Route
             path="/customers-order-track"

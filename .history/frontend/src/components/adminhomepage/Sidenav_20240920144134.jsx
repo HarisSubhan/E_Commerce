@@ -20,15 +20,15 @@ const Sidenav = ({ Children }) => {
             className=" gap-3 p-4  d-flex"
           >
             <img
-              width={100}
+              width={50}
               height={50}
-              src="https://banner2.cleanpng.com/20181111/qwe/kisspng-logo-e-commerce-payment-system-computer-icons-port-5be8ed550cb9f0.1417135615419917650521.jpg"
+              src="https://mannatthemes.com/robotech/default/assets/images/logo-sm.png"
               alt=""
             />
             <img
               width={150}
               height={50}
-              src="https://e7.pngegg.com/pngimages/480/581/png-clipart-logo-e-commerce-digital-marketing-brand-trade-ecommerce-text-service.png"
+              src="https://mannatthemes.com/robotech/default/assets/images/logo.png"
               alt=""
             />
           </div>

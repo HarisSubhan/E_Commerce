@@ -45,7 +45,7 @@ const Header = () => {
   };
 
   const handleClickProfile = () => {
-    nav("/customers-profile");
+    nav("/customers-checkout");
   };
 
   const handleLogOut = async () => {
@@ -71,7 +71,7 @@ const Header = () => {
   };
 
   const handlePlaceOrder = () => {
-    nav("/customers-checkout/:id");
+    nav("/customers-profile");
   };
 
   return (

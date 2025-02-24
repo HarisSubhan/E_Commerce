@@ -20,8 +20,8 @@ const Sidenav = ({ Children }) => {
             className=" gap-3 p-4  d-flex"
           >
             <img
-              width={100}
-              height={50}
+              // width={50}
+              // height={50}
               src="https://banner2.cleanpng.com/20181111/qwe/kisspng-logo-e-commerce-payment-system-computer-icons-port-5be8ed550cb9f0.1417135615419917650521.jpg"
               alt=""
             />

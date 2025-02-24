@@ -40,10 +40,6 @@ const Header = () => {
     setShow(null);
   };
 
-  const handleCartClose = () => {
-    setAnchorEl(null);
-  };
-
   const handleClickProfile = () => {
     nav("/customers-profile");
   };
@@ -70,8 +66,8 @@ const Header = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handlePlaceOrder = () => {
-    nav("/customers-checkout/:id");
+  const handleCartClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -224,7 +220,7 @@ const Header = () => {
                   color="primary"
                   fullWidth
                   sx={{ mt: 2 }}
-                  onClick={handlePlaceOrder}
+                  // onClick={handleCartClose}
                 >
                   Place Order
                 </Button>
