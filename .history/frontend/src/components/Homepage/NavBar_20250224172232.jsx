@@ -32,10 +32,10 @@ function NavBar() {
             <Nav.Link href="/customers-products">Product</Nav.Link>
             <Nav.Link href="/customers-wishlist">Wishlist</Nav.Link>
             <Nav.Link href="#stores">Stores</Nav.Link>
-            <Nav.Link href="customers-checkout">Checkout</Nav.Link>
+            <Nav.Link href="/customers-checkout">Checkout</Nav.Link>
           </Nav>
         </Box>
-        <MdList size={50} className="d-md-none" />
+        <MdList size={100} className="d-md-none" />
         <Box className="d-flex align-items-center gap-2">
           <FaStarOfDavid size={30} />
           <p className="p-0 m-0 fs-5 fw-bolder">

@@ -17,12 +17,10 @@ import {
 import { Search as SearchIcon, ShoppingCart } from "@mui/icons-material";
 // import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logOut } from "../../features/auth/authSlice";
 
 const Header = () => {
-  const { id } = useParams();
-
   const nav = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -158,7 +156,7 @@ const Header = () => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Badge badgeContent={cartItems.length} color="primary">
             <ShoppingCart
-              onClick={handleCartClick}
+              onClick={handlecCartClick}
               style={{ cursor: "pointer" }}
             />
           </Badge>
